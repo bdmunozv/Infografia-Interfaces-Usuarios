@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Las 10 Heurísticas de Usabilidad de Jakob Nielsen</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        
+        .author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .author img {
+            width: 24px;
+            height: 24px;
+        }
+        
+        .intro {
+            padding: 30px;
+            background: #f1f5f9;
+        }
+        
+        .intro-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .usability-def {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .usability-components {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .component {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .component-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1e40af;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin: 15px 0;
+            color: #2563eb;
+        }
+        
+        .heuristics {
+            padding: 30px;
+        }
+        
+        .heuristics-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .heuristic-card {
+            background: white;
+            border-left: 5px solid #2563eb;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .heuristic-number {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .example {
+            background: #f1f5f9;
+            padding: 12px;
+            border-radius: 6px;
+            margin-top: 12px;
+            font-style: italic;
+        }
+        
+        .application {
+            padding: 30px;
+            background: #f1f5f9;
+        }
+        
+        .application-content {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .evaluation, .tips {
+            flex: 1;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        ul {
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .conclusion {
+            padding: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #1e293b 0%, #1d3da6 100%);
+            color: white;
+        }
+        
+        .conclusion h2 {
+            color: white;
+            border-bottom-color: rgba(255,255,255,0.3);
+        }
+        
+        .principles {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .principle {
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 8px;
+            width: 200px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #1e293b;
+            color: white;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 900px) {
+            .intro-content, .application-content {
+                flex-direction: column;
+            }
+            
+            .heuristics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .principles {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Usabilidad y las 10 Heurísticas de Jakob Nielsen</h1>
+            <p class="subtitle">Principios fundamentales para el diseño de interfaces de usuario efectivas y centradas en el usuario</p>
+        </header>
+        
+        <section class="intro">
+            <h2>¿Qué es la Usabilidad?</h2>
+            <div class="intro-content">
+                <div class="usability-def">
+                    <div class="heuristic-card">
+                        <h3>🧿Definición</h3>
+                        <p>La usabilidad se refiere a la facilidad con la que los usuarios pueden utilizar un producto o sistema para lograr sus objetivos de manera efectiva, eficiente y satisfactoria.</p>
+                    </div>
+                    <div class="heuristic-card">
+                            <h3>👤Jakob Nielsen</h3>
+                        <p>Pionero en usabilidad web y cofundador del Nielsen Norman Group. Sus heurísticas, desarrolladas en 1994, siguen siendo el estándar de oro en evaluación de usabilidad.</p>
+                    </div>
+                </div>
+                
+                <div class="usability-components">
+                    <div class="component">
+                        <div class="component-icon">⚡</div>
+                        <h3>Eficiencia</h3>
+                        <p>Velocidad para completar tareas</p>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">✅</div>
+                        <h3>Efectividad</h3>
+                        <p>Completar objetivos con éxito</p>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">😊</div>
+                        <h3>Satisfacción</h3>
+                        <p>Experiencia positiva del usuario</p>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">📚</div>
+                        <h3>Aprendizaje</h3>
+                        <p>Facilidad para aprender el sistema</p>
+                    </div>
+                    <div class="component">
+                        <div class="component-icon">🧠</div>
+                        <h3>Memorabilidad</h3>
+                        <p>Recordar cómo usar el sistema</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="heuristics">
+            <h2>Las 10 Heurísticas de Nielsen</h2>
+            
+            <div class="heuristics-grid">
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">1</span> Visibilidad del Estado del Sistema</h3>
+                    <p>El sistema debe mantener informados a los usuarios sobre lo que está ocurriendo, a través de retroalimentación apropiada dentro de un tiempo razonable.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Barras de progreso durante descargas, indicadores de carga, notificaciones de estado de envío.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">2</span> Relación entre el Sistema y el Mundo Real</h3>
+                    <p>El sistema debe hablar el idioma de los usuarios, con palabras, frases y conceptos familiares, siguiendo convenciones del mundo real.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Iconos de carpetas para organización, metáfora de papelera para eliminar elementos.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">3</span> Control y Libertad del Usuario</h3>
+                    <p>Los usuarios a menudo eligen funciones del sistema por error y necesitarán una "salida de emergencia" claramente marcada para salir del estado no deseado.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Botones de deshacer/rehacer, confirmaciones antes de eliminar, navegación clara.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">4</span> Consistencia y Estándares</h3>
+                    <p>Los usuarios no deberían preguntarse si diferentes palabras, situaciones o acciones significan lo mismo. Seguir convenciones de la plataforma.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Usar terminología consistente, mantener ubicaciones de elementos similares en todas las páginas.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">5</span> Prevención de Errores</h3>
+                    <p>Mejor que buenos mensajes de error es un diseño cuidadoso que previene que ocurra un problema en primer lugar.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Validación en tiempo real, desactivar opciones no disponibles, formato automático de campos.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">6</span> Reconocimiento en lugar de Recordar</h3>
+                    <p>Minimizar la carga de memoria del usuario haciendo visibles objetos, acciones y opciones. El usuario no debería recordar información de una parte del diálogo a otra.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Menús desplegables con opciones, autocompletado, historial visible de acciones recientes.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">7</span> Flexibilidad y Eficiencia de Uso</h3>
+                    <p>Los aceleradores pueden acelerar la interacción para el usuario experto, permitiendo que el sistema atienda tanto a usuarios inexpertos como experimentados.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Atajos de teclado, personalización de interfaces, macros, herramientas avanzadas opcionales.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">8</span> Diseño Estético y Minimalista</h3>
+                    <p>Los diálogos no deberían contener información irrelevante o raramente necesaria. Cada unidad extra de información compite con las unidades relevantes.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Interfaces limpias, jerarquía visual clara, eliminar elementos innecesarios, espaciado adecuado.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">9</span> Ayudar a Reconocer, Diagnosticar y Recuperarse de Errores</h3>
+                    <p>Los mensajes de error deben expresarse en lenguaje claro, indicar precisamente el problema y sugerir constructivamente una solución.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> Mensajes específicos sobre qué está mal, sugerencias de solución, códigos de error comprensibles.
+                    </div>
+                </div>
+                
+                <div class="heuristic-card">
+                    <h3><span class="heuristic-number">10</span> Ayuda y Documentación</h3>
+                    <p>Aunque es mejor que el sistema pueda usarse sin documentación, puede ser necesario proporcionar ayuda. Esta información debe ser fácil de buscar y centrada en las tareas del usuario.</p>
+                    <div class="example">
+                        <strong>Ejemplo:</strong> FAQ contextuales, tutoriales interactivos, búsqueda en la ayuda, guías paso a paso.
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="application">
+            <h2>Aplicación en el Diseño</h2>
+            
+            <div class="application-content">
+                <div class="evaluation">
+                    <h3>Evaluación Heurística</h3>
+                    <ul>
+                        <li>Inspeccionar la interfaz siguiendo cada heurística</li>
+                        <li>Identificar violaciones y problemas de usabilidad</li>
+                        <li>Clasificar problemas por severidad</li>
+                        <li>Proponer soluciones específicas</li>
+                    </ul>
+                    
+                    <h3>Proceso de Evaluación</h3>
+                    <ul>
+                        <li>Involucrar múltiples evaluadores (3-5)</li>
+                        <li>Realizar evaluaciones independientes</li>
+                        <li>Consolidar y priorizar hallazgos</li>
+                        <li>Validar con pruebas de usuario</li>
+                    </ul>
+                </div>
+                
+                <div class="tips">
+                    <h3>Consejos para Aplicar las Heurísticas</h3>
+                    
+                    <h3>Durante el Diseño</h3>
+                    <ul>
+                        <li>Usar las heurísticas como checklist</li>
+                        <li>Considerar cada principio en decisiones de diseño</li>
+                        <li>Iterar basándose en evaluaciones heurísticas</li>
+                    </ul>
+                    
+                    <h3>Durante la Evaluación</h3>
+                    <ul>
+                        <li>No limitarse solo a las 10 heurísticas</li>
+                        <li>Considerar el contexto específico del producto</li>
+                        <li>Combinar con otras técnicas de evaluación</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section class="conclusion">
+            <h2>Conclusión</h2>
+            <p>Las heurísticas de Nielsen siguen siendo fundamentales en el diseño de interfaces de usuario después de más de 25 años. Proporcionan un marco estructurado para evaluar y mejorar la usabilidad de cualquier sistema interactivo.</p>
+            
+            <div class="principles">
+                <div class="principle">
+                    <h3 style="color: #002d77;">Estandar de la Industria</h3>
+                    <p>Referencia global en evaluación de usabilidad</p>
+                </div>
+                <div class="principle">
+                    <h3 style="color: #002d77;">Mejora Continua</h3>
+                    <p>Permite iteraciones basadas en principios probados</p>
+                </div>
+                <div class="principle">
+                    <h3 style="color: #002d77;">Experiencia de Usuario</h3>
+                    <p>Centrada en las necesidades reales de los usuarios</p>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; font-style: italic;">Las heurísticas no son reglas absolutas. Siempre considera el contexto específico de tu producto y usuarios.</p>
+        </section>
+        
+        <!-- <footer>
+            <p>© 2023 - Guía de Heurísticas de Usabilidad de Jakob Nielsen</p>
+        </footer> -->
+    </div>
+</body>
+</html>
